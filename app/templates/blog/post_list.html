@@ -9,17 +9,12 @@
 </head>
 <body>
     <h1>Post List</h1>
-
-    <div>
-        <p>published: 04.04.2018, 12:14</p>
-        <h2>My first post</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, aliquid commodi cumque deserunt doloremque ducimus excepturi in iusto minus obcaecati odio omnis quas. Consequuntur, culpa dolores doloribus ducimus eaque excepturi explicabo harum inventore iste, optio quasi repellendus saepe vero voluptas!</p>
-    </div>
-
-    <div>
-        <p>published: 04.04.2018, 12:14</p>
-        <h2>My second post</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, aliquid commodi cumque deserunt doloremque ducimus excepturi in iusto minus obcaecati odio omnis quas. Consequuntur, culpa dolores doloribus ducimus eaque excepturi explicabo harum inventore iste, optio quasi repellendus saepe vero voluptas!</p>
-    </div>
+    {% for post in posts %}
+        <div>
+            <p>published: {{post.published_date }}</p>
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.text }}</p>
+        </div>
+    {% endfor %}
 </body>
 </html>

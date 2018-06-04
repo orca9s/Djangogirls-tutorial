@@ -8,6 +8,22 @@ from blog.models import Post
 
 
 def post_list(request):
+    posts = Post.objects.all()
+    context = {
+        'posts': posts,
+    }
+    # render는 주어진 1,2번째 인수를 사용해서
+    # 1번째 인수: HttpRequest인스턴스
+    # 2번째 인수: 문자열 (TEMPLATE['DIRS']를 기준으로 탐색할 템플릿 파일의 경로)
+    # 3번째 인수: 템플릿을 랜더링 할때 사용할 객체 모음
+
+    return render(request, 'blog/post_list.html', context)
+    # return render(
+    #     request=request,
+    #
+    # )
+
+
     # cur_file_path = os.path.abspath(__file__)
     # blog_dir_path = os.path.dirname(cur_file_path)
     # app_dir_path = os.path.dirname(blog_dir_path)
@@ -20,8 +36,12 @@ def post_list(request):
     # html = render_to_string('blog/post_list.html')
     # 가져온 문자열을 돌려주기
     # return render(request, 'blog/post_list.html')
-    posts = Post.objects.all()
-    print(posts)
+
+
+
+
+    # posts = Post.objects.all()
+    # print(posts)
     # Post instance에서 title속성에 접근가능
     # HttpResponse에
     #
@@ -31,7 +51,8 @@ def post_list(request):
     # - PBE...
     #
     # 위 텍스트를 넣어서 리턴
-    result = '글 목록<br>'
-    for post in Post.objects.all():
-        result +='{}<br>'.format(post.title)
-    return HttpResponse(result)
+    # result = '글 목록<br>'
+    # for post in Post.objects.all():
+    #     result +='{}<br>'.format(post.title)
+    # return HttpResponse(result)
+
