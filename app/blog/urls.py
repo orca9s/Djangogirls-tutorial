@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from .views import post_list, post_detail
+from .views import post_list, post_detail, post_create
 
 urlpatterns = [
     # url의 첫 번째 인자: 매치될 URL정규표현식
@@ -13,4 +13,5 @@ urlpatterns = [
     #   (함수호출 아님)
     url(r'^$', post_list, name='post-list'),
     url(r'^post(\d+)/', post_detail, name='post-detail'),
+    url(r'^write/', post_create, name='post-create'),
 ]

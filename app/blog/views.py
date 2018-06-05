@@ -31,6 +31,22 @@ def post_detail(request, post_id):
     }
     return render(request, 'blog/post_detail.html', context)
 
+
+def post_create(request):
+    if request.method == 'POST':
+        post = Post.objects.create(
+            author=request.user,
+            title=request.POST['title'],
+            text=request.POST['text'],
+        )
+        return HttpResponse('id: {}, title: {}, text: {}, author: {}'.format(
+            post.id,
+            post.title,
+            post.text,
+            post.author
+        ))
+    else:
+        return render(request, 'blog/post_create.html',)
     # cur_file_path = os.path.abspath(__file__)
     # blog_dir_path = os.path.dirname(cur_file_path)
     # app_dir_path = os.path.dirname(blog_dir_path)
