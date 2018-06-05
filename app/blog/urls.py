@@ -11,7 +11,7 @@ urlpatterns = [
     # blog.views에 있는 post_list함수를
     # 아래 url함수의 두 번째 인자로 전달
     #   (함수호출 아님)
-    url(r'^$', post_list, name='post-list'),
+    url(r'^', post_list, name='post-list'),
     url(r'^post(\d+)/', post_detail, name='post-detail'),
     url(r'^write/', post_create, name='post-create'),
 ]
