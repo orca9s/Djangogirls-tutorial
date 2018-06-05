@@ -51,6 +51,12 @@ def post_create(request):
         # ))
     else:
         return render(request, 'blog/post_create.html',)
+
+
+def post_delete(request, post_id):
+    return HttpResponse('post_delete view function')
+
+
     # cur_file_path = os.path.abspath(__file__)
     # blog_dir_path = os.path.dirname(cur_file_path)
     # app_dir_path = os.path.dirname(blog_dir_path)
