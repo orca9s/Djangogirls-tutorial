@@ -54,7 +54,11 @@ def post_create(request):
 
 
 def post_delete(request, post_id):
-    return HttpResponse('post_delete view function')
+    if request.method == 'POST':
+        post = Post.objects.get(id=post_id)
+        post.delete()
+        return redirect('post-list')
+
 
 
     # cur_file_path = os.path.abspath(__file__)
