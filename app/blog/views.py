@@ -60,6 +60,27 @@ def post_delete(request, post_id):
         return redirect('post-list')
 
 
+def post_edit(request, post_id):
+    post = Post.objects.get(id=post_id)
+    if request.method =='POST':
+        # 글을 수정하기
+        title = request.POST['title']
+        text = request.POST['text']
+        post.title = title
+        post.text = text
+        post.save()
+
+        # return HttpResponseRedirect('/{}/'.format(post_id))
+        # (\d+)에 해당하는 부분을 채울 값이 함께 필요
+        return redirect('post-detail', post.id)
+    else:
+        obj = Post.objects.get(id=post_id)
+        ctx = {
+            'post': post,
+        }
+        return render(request, 'blog/post_edit.html', ctx)
+
+
 
     # cur_file_path = os.path.abspath(__file__)
     # blog_dir_path = os.path.dirname(cur_file_path)
