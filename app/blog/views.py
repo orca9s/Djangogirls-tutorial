@@ -73,12 +73,11 @@ def post_edit(request, post_id):
         # return HttpResponseRedirect('/{}/'.format(post_id))
         # (\d+)에 해당하는 부분을 채울 값이 함께 필요
         return redirect('post-detail', post.id)
-    else:
-        obj = Post.objects.get(id=post_id)
-        ctx = {
-            'post': post,
-        }
-        return render(request, 'blog/post_edit.html', ctx)
+    # post방식이면 어차피 위에서 return되므로 else문 생략
+    ctx = {
+        'post': post,
+    }
+    return render(request, 'blog/post_edit.html', ctx)
 
 
 
